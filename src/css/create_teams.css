@@ -1,0 +1,36 @@
+.make_team {
+  background-color: #aa7070;
+  border-radius: 16px;
+  color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin: 40px auto;
+  padding: 20px 10px 10px 10px;
+  text-decoration: none;
+  text-align: center;
+  width: 50%;
+}
+
+#teams {
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+}
+
+#team_container {
+  position: absolute;
+  overflow: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+#teams_header {
+  color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 50px;
+  line-height: 80px;
+  letter-spacing: 2px;
+  text-align: center;
+}
