@@ -1,4 +1,37 @@
-html, body {
+a {
+  text-decoration: none;
+}
+
+#app {
+  color: white;
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+}
+
+#app_title {
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+
+body, html {
+  background-color: green;
   margin: 0;
   padding: 0;
+}
+
+#solo_cup {
+  height: 100%;
+  width: 100%;
+}
+
+#teams_btn {
+  background-color: #aa7070;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin: 0 auto;
+  padding: 20px 10px 10px 10px;
+  text-decoration: none;
+  width: 50%;
 }
