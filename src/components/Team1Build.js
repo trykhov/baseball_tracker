@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addTeammates } from '../actions';
+import { Link } from 'react-router-dom';
+import '../css/teambuild.css';
 
 class TeamBuild extends React.Component {
 
@@ -25,8 +27,9 @@ class TeamBuild extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addTeammates("TEAM_1", this.state.playerName)
+    this.props.addTeammates("TEAM_1", this.state.teamName, this.state.playerName)
     this.setState({
+      teamName: this.state.teamName,
       playerName: ''
     })
   }
@@ -34,8 +37,10 @@ class TeamBuild extends React.Component {
   showRoster = list => {
     const currRoster = list.map(player => {
       return(
-        <div key={player}>
-          {player}
+        <div className="formRow" key={Math.random()}>
+          <a className="ui image label">
+            {player}
+          </a>
         </div>
       )
     });
@@ -44,48 +49,35 @@ class TeamBuild extends React.Component {
 
   render() {
     return(
-      <section>
-        <form onSubmit={this.handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label>Team 1 Name: </label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="ui input focus" data-children-count="1">
-                    <input type="text" placeholder="Team Name" onChange={this.changeTeamName} value={this.state.teamName}/>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Players: </label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="ui input focus" data-children-count="1">
-                    <input type="text" placeholder="Player Name" onChange={this.changePlayerName} value={this.state.playerName}/>
-                    <button className="ui icon button">
-                      <i className="plus square outline icon"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>{this.showRoster(this.props.players)}</td>
-              </tr>
-              <tr>
-                <td>
-                  <button id="done"> Done </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+      <section className="teamBuild">
+        <h1 id="teams_header"> Make Your Team! </h1>
+        <div className="teamContainer">
+          <form onSubmit={this.handleSubmit}>
+            <div className="formRow">
+              <label>Team 1 Name: </label>
+              <div className="ui input focus" data-children-count="1">
+                <input type="text" placeholder="Team Name" onChange={this.changeTeamName} value={this.state.teamName}/>
+              </div>
+            </div>
+            <div className="formRow">
+              <label>Players: </label>
+              <div className="ui input focus" data-children-count="1">
+                <input type="text" placeholder="Player Name" onChange={this.changePlayerName} value={this.state.playerName}/>
+                <button className="ui icon button">
+                  <i className="plus square outline icon"></i>
+                </button>
+              </div>
+            </div>
+            <div>
+            {this.showRoster(this.props.players)}
+            </div>
+          </form>
+          <Link to="/team2_build">
+            <button className="ui primary button" >
+              Done
+            </button> {/** will be a link **/}
+          </Link>
+        </div>
       </section>
     );
   }

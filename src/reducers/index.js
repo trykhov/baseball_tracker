@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 
 
 const addtoTeamOne = (roster = [], action) => {
-  if(action.type === "TEAM_1") {
+  if(action.type.team === "TEAM_1") {
     return [...roster, action.payload];
   } else {
     return roster;
@@ -11,7 +11,7 @@ const addtoTeamOne = (roster = [], action) => {
 }
 
 const addtoTeamTwo = (roster = [], action) => {
-  if(action.type === "TEAM_2") {
+  if(action.type.team === "TEAM_2") {
     return [...roster, action.payload];
   } else {
     return roster;

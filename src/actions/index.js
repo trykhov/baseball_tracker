@@ -1,8 +1,11 @@
 import React from 'react';
 
-export const addTeammates = (team, name = null) => {
+export const addTeammates = (team, teamName, name = null) => {
   return {
-    type: team,
+    type: {
+      team: team,
+      teamName: teamName
+    },
     payload: name
   }
 }
