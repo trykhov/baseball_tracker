@@ -72,9 +72,11 @@ class TeamBuild extends React.Component {
             {this.showRoster(this.props.players)}
             </div>
           </form>
-          <button className="ui primary button" >
-            Done
-          </button> {/** will be a link **/}
+          <Link to="/play_ball">
+            <button className="ui primary button" >
+              Done
+            </button> {/** will be a link **/}
+          </Link>
         </div>
       </section>
     );

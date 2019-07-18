@@ -1,0 +1,72 @@
+
+.bases {
+  height: 30%;
+  width: 80%;
+}
+
+#batter {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#field {
+  background-color: green;
+}
+
+#fieldContainer {
+  color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+#field_status {
+  display: flex;
+  justify-content: center;
+}
+
+#hits {
+  margin-top: 40px;
+}
+
+#info {
+  text-align: center;
+}
+
+#info label {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+#miss {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#out {
+  background-color: red;
+  margin-top: 20px;
+  margin-left: 35px;
+}
+
+#score {
+  margin: 40px auto;
+  text-align: center;
+  justify-content: space-between;
+}
+
+#score label {
+  margin: 0 30px;
+}
+
+.shots {
+  width: 60px;
+}
+
+#strike {
+  background-color: yellow;
+  margin-top: 20px;
+  margin-right: 30px;
+}

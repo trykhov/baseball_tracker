@@ -1,6 +1,5 @@
 import React from 'react';
 import app from '../css/app.css';
-import Field from './Field';
 import solo_cup from '../img/solo_cup.png';
 import { Link } from 'react-router-dom';
 
