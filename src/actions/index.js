@@ -30,6 +30,6 @@ export const batter = () => {
   return {type: "BATTER"}
 }
 
-export const onBase = () => {
-  return {type: "ONBASE"}
+export const hit = bases => {
+  return {type: "HIT", payload: bases}
 }

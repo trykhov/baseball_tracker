@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newInning, strike, youreOut } from '../actions';
+import { newInning, strike, youreOut, hit } from '../actions';
 import '../css/game.css';
 import empty from '../img/empty_bases.png';
 import bunt from '../img/bunt_cup.png';
@@ -11,14 +11,6 @@ import homerun  from '../img/homerun.png';
 
 
 class Game extends React.Component {
-
-  state = {
-    bases: {first: false, second: false, third: false },
-    score: { team1: 0, team2: 0,},
-    curr_inning: { top: true, bottom: false, num: 1 },
-    outs: 0,
-    strikes: 0
-  }
 
   strikeOut = () => { // keeps track of strikes and outs
     if(this.props.strikes == 2) {
@@ -37,6 +29,25 @@ class Game extends React.Component {
       this.props.newInning();
     }
     this.props.youreOut();
+  }
+
+  batterHit = (num) => {
+    let newBase = this.props.bases.slice(0);
+    let hold = new Array(4).fill(false);
+    newBase[0] = true;
+    for(let i = 0; i < hold.length; i++) {
+      if(i + num < 4) {
+        hold[(i + num) % hold.length] = newBase[i];
+      }
+    }
+    for(let i = 0; i < hold.length; i++) {
+        newBase[i] = hold[i];
+    }
+    this.props.hit(newBase);
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.bases);
   }
 
   render() {
@@ -61,10 +72,10 @@ class Game extends React.Component {
           </div>
           <div id="hits">
             <img className="shots" src={bunt}/>
-            <img className="shots" src={single}/>
-            <img className="shots" src={double}/>
-            <img className="shots" src={triple}/>
-            <img className="shots" src={homerun}/>
+            <img className="shots" src={single} onClick={() => this.batterHit(1)}/>
+            <img className="shots" src={double} onClick={() => this.batterHit(2)}/>
+            <img className="shots" src={triple} onClick={() => this.batterHit(3)}/>
+            <img className="shots" src={homerun} onClick={() => this.batterHit(4)}/>
           </div>
           <div id="miss">
             <button id="strike" className="ui button" onClick={this.strikeOut}>STRIKE!</button>
@@ -82,8 +93,9 @@ const mapStateToProps = state => {
     team1: state.team1Players,
     team2: state.team2Players,
     strikes: state.strikes,
-    outs: state.outs
+    outs: state.outs,
+    bases: state.onBase
   }
 }
 
-export default connect(mapStateToProps, {newInning, strike, youreOut})(Game);
+export default connect(mapStateToProps, {newInning, strike, youreOut, hit})(Game);
