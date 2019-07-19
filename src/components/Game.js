@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { newInning, strike, youreOut, hit } from '../actions';
 import '../css/game.css';
-import empty from '../img/empty_bases.png';
 import bunt from '../img/bunt_cup.png';
 import single from '../img/single.png';
 import double from '../img/double.png';
 import triple from '../img/triple.png';
 import homerun  from '../img/homerun.png';
+import FieldImage from './FieldImage';
 
 
 class Game extends React.Component {
@@ -72,9 +72,7 @@ class Game extends React.Component {
             <label style={{color: "red"}}>Team 1: </label>
             <label style={{color: "blue"}}>Team 2: </label>
           </div>
-          <div id="field_status">
-            <img className="bases" src={empty} />
-          </div>
+          <FieldImage />
           <div id="info">
             <label> Inning: <i className="angle up icon"></i>{this.props.inning}</label>
             <label> Strikes: {this.props.strikes} </label>
