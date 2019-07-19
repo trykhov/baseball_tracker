@@ -24,7 +24,7 @@ const flipArrow = (topBottom = true, action) => { // true = top, false = bottom 
 
 const strikeOut = (strike = 0, action) => {
   if(action.type === "STRIKE") {
-    return strike === 3 ? 0 : strike + 1;
+    return strike === 2 ? 0 : strike + 1;
   } else {
     return strike
   }

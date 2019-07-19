@@ -12,11 +12,19 @@ import FieldImage from './FieldImage';
 
 class Game extends React.Component {
 
+  inningArrow = () => {
+    if(this.props.topOrBottom) {
+      return <i className="angle up icon"></i>
+    }
+    return <i className="angle down icon"></i>
+  }
+
   strikeOut = () => { // keeps track of strikes and outs
     if(this.props.strikes === 2) {
       this.getOut();
+    } else {
+      this.props.strike();
     }
-    this.props.strike();
   }
 
   getOut = () => { // keeps track of the outs
@@ -84,7 +92,7 @@ class Game extends React.Component {
           </div>
           <FieldImage />
           <div id="info">
-            <label> Inning: <i className="angle up icon"></i>{this.props.inning}</label>
+            <label> Inning: {this.inningArrow()}{this.props.inning}</label>
             <label> Strikes: {this.props.strikes} </label>
             <label> Outs: {this.props.outs} </label>
           </div>
