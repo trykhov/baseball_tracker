@@ -31,7 +31,11 @@ class Game extends React.Component {
     this.props.youreOut();
   }
 
-  batterHit = (num) => {
+  batterHit = (num, bunt = false) => {
+    // implement a rotating array algorithm for the bases
+    // when a player "hits", then they move to the num of bases
+    // everyone before num moves up by num, everyone after num moves up by 1
+    num = bunt ? 1 : num;
     let newBase = this.props.bases.slice(0);
     let hold = new Array(4).fill(false);
     newBase[0] = true;
@@ -43,9 +47,19 @@ class Game extends React.Component {
     for(let i = 0; i < hold.length; i++) {
         newBase[i] = hold[i];
     }
+    newBase[1] = bunt ? false : newBase[1];
     this.props.hit(newBase);
   }
 
+  bunt = () => {
+    if(this.props.outs < 2) {
+      this.batterHit(1, true);
+    }
+    this.getOut();
+  }
+
+  // for testing only
+  // console.log() runs faster than the change of state
   componentDidUpdate() {
     console.log(this.props.bases);
   }
@@ -71,11 +85,11 @@ class Game extends React.Component {
             <p> Batter Name </p>
           </div>
           <div id="hits">
-            <img className="shots" src={bunt}/>
-            <img className="shots" src={single} onClick={() => this.batterHit(1)}/>
-            <img className="shots" src={double} onClick={() => this.batterHit(2)}/>
-            <img className="shots" src={triple} onClick={() => this.batterHit(3)}/>
-            <img className="shots" src={homerun} onClick={() => this.batterHit(4)}/>
+            <img className="shots" src={bunt} onClick={() => this.bunt()}/>
+            <img className="shots" src={single} onClick={() => this.batterHit(1, false)}/>
+            <img className="shots" src={double} onClick={() => this.batterHit(2, false)}/>
+            <img className="shots" src={triple} onClick={() => this.batterHit(3, false)}/>
+            <img className="shots" src={homerun} onClick={() => this.batterHit(4, false)}/>
           </div>
           <div id="miss">
             <button id="strike" className="ui button" onClick={this.strikeOut}>STRIKE!</button>
