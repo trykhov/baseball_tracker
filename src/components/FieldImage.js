@@ -1,31 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import empty from '../img/empty_bases.png';
-import firstSecond from '../img/on_first_second.png';
-import firstThird from '../img/on_first_third.png';
-import secondThird from '../img/on_second_third.png';
-
 
 class FieldImage extends React.Component {
 
   renderField = () => {
     let field = this.props.bases;
     if(field[1] && field[2] && field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/bases_loaded.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/bases_loaded.png')} alt="field"/>;
     } else if(field[1] && field[2] && !field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first_second.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first_second.png')} alt="field"/>;
     } else if(field[1] && !field[2] && !field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first.png')} alt="field"/>;
     } else if(!field[1] && field[2] && !field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_second.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_second.png')} alt="field"/>;
     } else if(!field[1] && field[2] && field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_second_third.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_second_third.png')} alt="field"/>;
     } else if(!field[1] && !field[2] && field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_third.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_third.png')} alt="field"/>;
     } else if(field[1] && !field[2] && field[3]) {
-      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first_third.png')} />;
+      return <img style={{height: "30%", width: "80%"}} src={require('../img/on_first_third.png')} alt="field"/>;
     }
-    return <img style={{height: "30%", width: "80%"}} src={require('../img/empty_bases.png')} />;;
+    return <img style={{height: "30%", width: "80%"}} src={require('../img/empty_bases.png')} alt="field"/>;;
   }
 
   render() {

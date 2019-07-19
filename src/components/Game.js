@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newInning, strike, youreOut, hit } from '../actions';
+import { newInning, strike, youreOut, hit, changeArrow } from '../actions';
 import '../css/game.css';
 import bunt from '../img/bunt_cup.png';
 import single from '../img/single.png';
@@ -13,8 +13,8 @@ import FieldImage from './FieldImage';
 class Game extends React.Component {
 
   strikeOut = () => { // keeps track of strikes and outs
-    if(this.props.strikes == 2) {
-      this.props.youreOut();
+    if(this.props.strikes === 2) {
+      this.getOut();
     }
     this.props.strike();
   }
@@ -25,13 +25,17 @@ class Game extends React.Component {
       this.props.strike();
       count += 1;
     }
-    if(this.props.outs == 2) {
-      this.props.newInning();
+    if(this.props.outs === 2) {
+      if(!this.props.topOrBottom) {
+        this.props.newInning();
+      }
+      this.props.changeArrow();
+      this.batterHit(0, false, true);
     }
     this.props.youreOut();
   }
 
-  batterHit = (num, bunt = false) => {
+  batterHit = (num, bunt = false, clear = false) => {
     // implement a rotating array algorithm for the bases
     // when a player "hits", then they move to the num of bases
     // everyone before num moves up by num, everyone after num moves up by 1
@@ -48,6 +52,7 @@ class Game extends React.Component {
         newBase[i] = hold[i];
     }
     newBase[1] = bunt ? false : newBase[1];
+    newBase = clear ? newBase.fill(false) : newBase;
     this.props.hit(newBase);
   }
 
@@ -58,10 +63,15 @@ class Game extends React.Component {
     this.getOut();
   }
 
+
+
   // for testing only
   // console.log() runs faster than the change of state
   componentDidUpdate() {
-    console.log(this.props.bases);
+    // console.log(this.props.team1);
+    // console.log(this.props.team2);
+    // console.log(this.props.bases);
+    console.log(this.props.topOrBottom);
   }
 
   render() {
@@ -83,11 +93,11 @@ class Game extends React.Component {
             <p> Batter Name </p>
           </div>
           <div id="hits">
-            <img className="shots" src={bunt} onClick={() => this.bunt()}/>
-            <img className="shots" src={single} onClick={() => this.batterHit(1, false)}/>
-            <img className="shots" src={double} onClick={() => this.batterHit(2, false)}/>
-            <img className="shots" src={triple} onClick={() => this.batterHit(3, false)}/>
-            <img className="shots" src={homerun} onClick={() => this.batterHit(4, false)}/>
+            <img className="shots" src={bunt} onClick={() => this.bunt()} alt="points"/>
+            <img className="shots" src={single} onClick={() => this.batterHit(1, false, false)} alt="points"/>
+            <img className="shots" src={double} onClick={() => this.batterHit(2, false, false)} alt="points"/>
+            <img className="shots" src={triple} onClick={() => this.batterHit(3, false, false)} alt="points"/>
+            <img className="shots" src={homerun} onClick={() => this.batterHit(4, false, false)} alt="points"/>
           </div>
           <div id="miss">
             <button id="strike" className="ui button" onClick={this.strikeOut}>STRIKE!</button>
@@ -101,6 +111,7 @@ class Game extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    topOrBottom: state.inDirection,
     inning: state.inning,
     team1: state.team1Players,
     team2: state.team2Players,
@@ -110,4 +121,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {newInning, strike, youreOut, hit})(Game);
+export default connect(mapStateToProps, {newInning, strike, youreOut, hit, changeArrow})(Game);

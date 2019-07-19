@@ -47,6 +47,10 @@ class TeamBuild extends React.Component {
     return currRoster
   }
 
+  componentDidUpdate() {
+    console.log(this.props.players);
+  }
+
   render() {
     return(
       <section className="teamBuild">

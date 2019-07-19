@@ -75,7 +75,7 @@ class TeamBuild extends React.Component {
           <Link to="/team2_build">
             <button className="ui primary button" >
               Done
-            </button> {/** will be a link **/}
+            </button>
           </Link>
         </div>
       </section>

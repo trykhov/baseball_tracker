@@ -11,24 +11,20 @@ const addtoTeamOne = (roster = [], action) => {
 }
 
 const addtoTeamTwo = (roster = [], action) => {
-  if(action.type.team === "TEAM_2") {
-    return [...roster, action.payload];
-  } else {
-    return roster;
-  }
+  return action.type.team === "TEAM_2" ? [...roster, action.payload] : roster;
 }
 
 const changeInnings = (currIn = 1, action) => {
-  if(action.type === "NEXT") {
-    return currIn + 1;
-  } else {
-    return currIn;
-  }
+  return action.type === "NEXT" ? currIn + 1 : currIn;
+}
+
+const flipArrow = (topBottom = true, action) => { // true = top, false = bottom of inning
+  return action.type === "CHANGE" ? !topBottom : topBottom;
 }
 
 const strikeOut = (strike = 0, action) => {
   if(action.type === "STRIKE") {
-    return strike == 2 ? 0 : strike + 1;
+    return strike === 3 ? 0 : strike + 1;
   } else {
     return strike
   }
@@ -36,7 +32,7 @@ const strikeOut = (strike = 0, action) => {
 
 const out = (outs = 0, action) => {
   if(action.type === "OUT") {
-    return outs == 2 ? 0 : outs + 1;
+    return outs === 2 ? 0 : outs + 1;
   } else {
     return outs
   }
@@ -59,17 +55,14 @@ const scoreTwo = (score = 0, team, action) => {
 }
 
 const whoOnBase = (bases = [], action) => {
-  if(action.type === "HIT") {
-    return action.payload;
-  } else {
-    return bases
-  }
+  return action.type === "HIT" ? action.payload : bases;
 }
 
 
 // these store values into the central store
 export default combineReducers({
   inning: changeInnings, // stores an integer
+  inDirection: flipArrow, // stores a boolean
   team1Players: addtoTeamOne, // stores an array of players on team 1
   team2Players: addtoTeamTwo, // stores an array of players on team 2
   strikes: strikeOut, // returns an integer for the current strikes in the game
