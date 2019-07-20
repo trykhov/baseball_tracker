@@ -13,7 +13,8 @@ class ScoreOne extends React.Component {
 const mapStateToProps = state => {
   return {
     oneScore: state.oneScore,
-    teamOneName: state.teamOneName}
+    teamOneName: state.teamOneName
+  }
 }
 
 export default connect(mapStateToProps)(ScoreOne);

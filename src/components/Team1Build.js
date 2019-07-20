@@ -47,6 +47,11 @@ class TeamBuild extends React.Component {
     return currRoster
   }
 
+  // componentDidUpdate() {
+  //   console.log(this.props.players);
+  //   console.log(this.props.name);
+  // }
+
   render() {
     return(
       <section className="teamBuild">
@@ -84,7 +89,7 @@ class TeamBuild extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {players: state.team1Players, name: state.team1Name}
+  return {players: state.team1Players, name: state.teamOneName}
 }
 
 export default connect(mapStateToProps, {addTeammates})(TeamBuild);
