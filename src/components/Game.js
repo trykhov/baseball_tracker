@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newInning, strike, youreOut, hit, changeArrow, score } from '../actions';
+import { newInning, strike, youreOut, hit, changeArrow, score, currBatterOne, currBatterTwo } from '../actions';
 import '../css/game.css';
 import bunt from '../img/bunt_cup.png';
 import single from '../img/single.png';
@@ -10,6 +10,7 @@ import homerun  from '../img/homerun.png';
 import FieldImage from './FieldImage';
 import ScoreOne from './ScoreOne.js';
 import ScoreTwo from './ScoreTwo.js';
+import CurrentBatter from './CurrentBatter.js';
 
 class Game extends React.Component {
 
@@ -30,6 +31,7 @@ class Game extends React.Component {
 
   getOut = () => { // keeps track of the outs
     let count = this.props.strikes;
+    let battingTeam = this.props.topOrBottom ? "TEAM_1" : "TEAM_2";
     while(count < 3) {
       this.props.strike();
       count += 1;
@@ -39,7 +41,9 @@ class Game extends React.Component {
         this.props.newInning();
       }
       this.props.changeArrow();
-      this.batterHit(0, false, true);
+      this.batterHit(0, false, true); // resets the field
+    } else {
+      this.nextBatter(battingTeam);
     }
     this.props.youreOut();
   }
@@ -69,6 +73,7 @@ class Game extends React.Component {
     newBase[1] = bunt ? false : newBase[1];
     newBase = clear ? newBase.fill(false) : newBase;
     this.props.hit(newBase);
+    this.nextBatter(battingTeam);
   }
 
   bunt = () => {
@@ -78,12 +83,21 @@ class Game extends React.Component {
     this.getOut();
   }
 
+  nextBatter = (team) => {
+    // team will be team 1 or team 2
+    if(team === "TEAM_1") {
+      this.props.currBatterOne(this.props.team1);
+    } else {
+      this.props.currBatterTwo(this.props.team2);
+    }
+  }
 
 
   // for testing only
   // console.log() runs faster than the change of state
   componentDidUpdate() {
-
+    // console.log(this.props.team1[this.props.atBatOne], this.props.atBatOne);
+    // console.log(this.props.team2[this.props.atBatTwo], this.props.atBatTwo);
   }
 
   render() {
@@ -102,7 +116,7 @@ class Game extends React.Component {
           </div>
           <div id="batter">
             <p> Batter Up! </p>
-            <p> Batter Name </p>
+            <CurrentBatter />
           </div>
           <div id="hits">
             <img className="shots" src={bunt} onClick={() => this.bunt()} alt="points"/>
@@ -124,6 +138,8 @@ class Game extends React.Component {
 const mapStateToProps = state => {
   return {
     bases: state.onBase,
+    atBatOne: state.currBatOne,
+    atBatTwo: state.currBatTwo,
     inning: state.inning,
     outs: state.outs,
     strikes: state.strikes,
@@ -133,4 +149,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {newInning, strike, youreOut, hit, changeArrow, score})(Game);
+export default connect(
+  mapStateToProps,
+  {newInning, strike, youreOut, hit, changeArrow, score, currBatterOne, currBatterTwo})(Game);

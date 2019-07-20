@@ -7,11 +7,11 @@ const addtoTeamOne = (roster = [], action) => {
 }
 
 const teamOneName = (name = "Team 1", action) => {
-  return action.type.team === "TEAM_1" ? action.type.teamName : name;
+  return action.type.team === "TEAM_1" && action.type.teamName !== '' ? action.type.teamName : name;
 }
 
 const teamTwoName = (name = "Team 2", action) => {
-  return action.type.team === "TEAM_2" ? action.type.teamName : name;
+  return action.type.team === "TEAM_2" && action.type.teamName !== '' ? action.type.teamName : name;
 }
 
 const addtoTeamTwo = (roster = [], action) => {
@@ -62,9 +62,20 @@ const whoOnBase = (bases = [], action) => {
   return action.type === "HIT" ? action.payload : bases;
 }
 
+const currBatOne = (index = 0, action) => {
+  let roster = action.payload;
+  return action.type === "TEAM_1" ? (index + 1) % roster.length : index;
+}
+
+const currBatTwo = (index = 0, action) => {
+  let roster = action.payload;
+  return action.type === "TEAM_2" ? (index + 1) % roster.length : index;
+}
 
 // these store values into the central store
 export default combineReducers({
+  currBatOne: currBatOne,
+  currBatTwo: currBatTwo,
   inDirection: flipArrow, // stores a boolean
   inning: changeInnings, // stores an integer
   onBase: whoOnBase, // returns array of who is on base

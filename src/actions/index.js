@@ -37,3 +37,11 @@ export const batter = () => { // tells us current batter
 export const hit = bases => { // tells how many bases covered from hit
   return {type: "HIT", payload: bases}
 }
+
+export const currBatterOne = (teamOnePlayers) => {
+  return {type: "TEAM_1", payload: teamOnePlayers}
+}
+
+export const currBatterTwo = (teamTwoPlayers) => {
+  return {type: "TEAM_2", payload: teamTwoPlayers}
+}
