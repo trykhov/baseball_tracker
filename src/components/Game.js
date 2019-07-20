@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newInning, strike, youreOut, hit, changeArrow } from '../actions';
+import { newInning, strike, youreOut, hit, changeArrow, score } from '../actions';
 import '../css/game.css';
 import bunt from '../img/bunt_cup.png';
 import single from '../img/single.png';
@@ -8,7 +8,8 @@ import double from '../img/double.png';
 import triple from '../img/triple.png';
 import homerun  from '../img/homerun.png';
 import FieldImage from './FieldImage';
-
+import ScoreOne from './ScoreOne.js';
+import ScoreTwo from './ScoreTwo.js';
 
 class Game extends React.Component {
 
@@ -52,6 +53,11 @@ class Game extends React.Component {
     let hold = new Array(4).fill(false);
     newBase[0] = true;
     for(let i = 0; i < hold.length; i++) {
+      //
+      if(newBase[i] && i + num >= 4) {
+        this.props.score("TEAM_2")
+      }
+      //
       if(i + num < 4) {
         hold[(i + num) % hold.length] = newBase[i];
       }
@@ -76,10 +82,7 @@ class Game extends React.Component {
   // for testing only
   // console.log() runs faster than the change of state
   componentDidUpdate() {
-    // console.log(this.props.team1);
-    // console.log(this.props.team2);
-    // console.log(this.props.bases);
-    console.log(this.props.topOrBottom);
+
   }
 
   render() {
@@ -87,8 +90,8 @@ class Game extends React.Component {
       <section id="field">
         <div id="fieldContainer">
           <div id="score">
-            <label style={{color: "red"}}>Team 1: </label>
-            <label style={{color: "blue"}}>Team 2: </label>
+            <ScoreOne />
+            <ScoreTwo />
           </div>
           <FieldImage />
           <div id="info">
@@ -119,14 +122,14 @@ class Game extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    topOrBottom: state.inDirection,
+    bases: state.onBase,
     inning: state.inning,
+    outs: state.outs,
+    strikes: state.strikes,
     team1: state.team1Players,
     team2: state.team2Players,
-    strikes: state.strikes,
-    outs: state.outs,
-    bases: state.onBase
+    topOrBottom: state.inDirection,
   }
 }
 
-export default connect(mapStateToProps, {newInning, strike, youreOut, hit, changeArrow})(Game);
+export default connect(mapStateToProps, {newInning, strike, youreOut, hit, changeArrow, score})(Game);

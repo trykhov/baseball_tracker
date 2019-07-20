@@ -3,11 +3,15 @@ import { combineReducers } from 'redux';
 
 
 const addtoTeamOne = (roster = [], action) => {
-  if(action.type.team === "TEAM_1") {
-    return [...roster, action.payload];
-  } else {
-    return roster;
-  }
+  return action.type.team === "TEAM_1" ? [...roster, action.payload] : roster;
+}
+
+const teamOneName = (name = "Team 1", action) => {
+  return action.type.team === "TEAM_1" ? action.type.teamName : name;
+}
+
+const teamTwoName = (name = "Team 2", action) => {
+  return action.type.team === "TEAM_2" ? action.type.teamName : name;
 }
 
 const addtoTeamTwo = (roster = [], action) => {
@@ -38,17 +42,17 @@ const out = (outs = 0, action) => {
   }
 }
 
-const scoreOne = (score = 0, team, action) => {
-  if(action.type === "SCORE" && team === "TEAM_1") {
-    return score + action.payload;
+const scoreOne = (score = 0, action) => {
+  if(action.type === "SCORE" && action.payload === "TEAM_1") {
+    return score + 1;
   } else {
     return score
   }
 }
 
-const scoreTwo = (score = 0, team, action) => {
-  if(action.type === "SCORE" && team === "TEAM_2") {
-    return score + action.payload;
+const scoreTwo = (score = 0, action) => {
+  if(action.type === "SCORE" && action.payload === "TEAM_2") {
+    return score + 1;
   } else {
     return score;
   }
@@ -61,11 +65,15 @@ const whoOnBase = (bases = [], action) => {
 
 // these store values into the central store
 export default combineReducers({
-  inning: changeInnings, // stores an integer
   inDirection: flipArrow, // stores a boolean
-  team1Players: addtoTeamOne, // stores an array of players on team 1
-  team2Players: addtoTeamTwo, // stores an array of players on team 2
-  strikes: strikeOut, // returns an integer for the current strikes in the game
+  inning: changeInnings, // stores an integer
+  onBase: whoOnBase, // returns array of who is on base
   outs: out, // returns integer of outs
-  onBase: whoOnBase // returns array of who is on base
+  oneScore: scoreOne,
+  strikes: strikeOut, // returns an integer for the current strikes in the game
+  teamOneName: teamOneName,
+  team1Players: addtoTeamOne, // stores an array of players on team 1
+  teamTwoName: teamTwoName,
+  team2Players: addtoTeamTwo, // stores an array of players on team 2
+  twoScore: scoreTwo
 })

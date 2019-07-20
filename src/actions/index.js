@@ -26,8 +26,8 @@ export const youreOut = () => { // batter is out
   return {type: "OUT"}
 }
 
-export const score = (count) => { // keeps track of the score
-  return {type: "SCORE", payload: count}
+export const score = (teamScore) => { // keeps track of the score
+  return {type: "SCORE", payload: teamScore}
 }
 
 export const batter = () => { // tells us current batter

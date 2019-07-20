@@ -84,7 +84,7 @@ class TeamBuild extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {players: state.team1Players}
+  return {players: state.team1Players, name: state.team1Name}
 }
 
 export default connect(mapStateToProps, {addTeammates})(TeamBuild);
