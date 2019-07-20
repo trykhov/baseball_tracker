@@ -48,6 +48,7 @@ class Game extends React.Component {
     // implement a rotating array algorithm for the bases
     // when a player "hits", then they move to the num of bases
     // everyone before num moves up by num, everyone after num moves up by 1
+    let battingTeam = this.props.topOrBottom ? "TEAM_1" : "TEAM_2"; // determins who scores depending on inning
     num = bunt ? 1 : num;
     let newBase = this.props.bases.slice(0);
     let hold = new Array(4).fill(false);
@@ -55,7 +56,7 @@ class Game extends React.Component {
     for(let i = 0; i < hold.length; i++) {
       //
       if(newBase[i] && i + num >= 4) {
-        this.props.score("TEAM_2")
+        this.props.score(battingTeam)
       }
       //
       if(i + num < 4) {
