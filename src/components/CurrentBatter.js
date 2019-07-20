@@ -7,9 +7,9 @@ class CurrentBatter extends React.Component {
   batter = () => {
     let battingTeam = this.props.topOrBottom ? "TEAM_1" : "TEAM_2";
     if(battingTeam === "TEAM_1") {
-      return this.props.team1[this.props.atBatOne];
+      return <p style={{color: "red"}}>{this.props.team1[this.props.atBatOne]}</p>;
     } else {
-      return this.props.team2[this.props.atBatTwo];
+      return <p style={{color: "blue"}}>{this.props.team2[this.props.atBatTwo]}</p>;
     }
   }
 

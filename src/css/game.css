@@ -14,7 +14,7 @@
   font-size: 20px;
   letter-spacing: 2px;
   margin: 0 auto;
-  width: 80%;
+  width: 50%;
 }
 
 #field_status {
@@ -23,7 +23,9 @@
 }
 
 #hits {
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
 }
 
 #info {
@@ -36,15 +38,11 @@
 }
 
 #miss {
-  width: 80%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
 }
 
-#out {
-  background-color: red;
-  margin-top: 20px;
-  margin-left: 35px;
-}
 
 #score {
   margin: 40px auto;
@@ -57,11 +55,33 @@
 }
 
 .shots {
-  width: 60px;
+  width: 15vw;
 }
 
 #strike {
   background-color: yellow;
-  margin-top: 20px;
   margin-right: 30px;
+}
+
+#strike, #out {
+  border-radius: 16px;
+  height: 8vh;
+  width: 12vw;
+}
+
+#out {
+  background-color: red;
+  margin-left: 30px;
+}
+
+/********************************* Media Query ********************************/
+@media (max-width: 400px) {
+  #fieldContainer {
+    width: 80%;
+  }
+
+  #strike, #out {
+    width: 100px;
+    height: 50px;
+  }
 }
