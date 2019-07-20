@@ -10,7 +10,8 @@ class TeamBuild extends React.Component {
   // redux is a global state
   state = {
     teamName: '',
-    playerName: ''
+    playerName: '',
+    errorMessage: ''
   }
 
   changeTeamName = e => {
@@ -48,6 +49,7 @@ class TeamBuild extends React.Component {
   }
 
   stopMessage = () => {
+
     if(this.props.players.length > 0) {
       return(
         <Link to="/play_ball">
@@ -55,6 +57,16 @@ class TeamBuild extends React.Component {
             Done
           </button>
         </Link>
+      )
+    } else {
+      return (
+        <div>
+        {this.state.errorMessage}
+          <button className="ui button" onClick={() =>
+            this.setState({errorMessage: <p style={{color: "red"}}> * Every team must have at least one player</p>})}>
+            Done
+          </button>
+        </div>
       )
     }
   }
