@@ -47,6 +47,18 @@ class TeamBuild extends React.Component {
     return currRoster
   }
 
+  stopMessage = () => {
+    if(this.props.players.length > 0) {
+      return(
+        <Link to="/play_ball">
+          <button className="ui primary button" >
+            Done
+          </button>
+        </Link>
+      )
+    }
+  }
+
   // componentDidUpdate() {
   //   console.log(this.props.players);
   // }
@@ -76,11 +88,7 @@ class TeamBuild extends React.Component {
             {this.showRoster(this.props.players)}
             </div>
           </form>
-          <Link to="/play_ball">
-            <button className="ui primary button" >
-              Done
-            </button> {/** will be a link **/}
-          </Link>
+          {this.stopMessage()}
         </div>
       </section>
     );
