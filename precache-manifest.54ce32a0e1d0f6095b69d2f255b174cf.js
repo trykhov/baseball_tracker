@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71fd99e7a18759563ea2e53f99b8081c",
+    "revision": "8f14e61e11c67ced0635f5faf9b42b4a",
     "url": "/baseball_tracker/index.html"
   },
   {
