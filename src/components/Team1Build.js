@@ -28,7 +28,9 @@ class TeamBuild extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addTeammates("TEAM_1", this.state.teamName, this.state.playerName)
+    if(this.state.playerName.length > 0) {
+      this.props.addTeammates("TEAM_1", this.state.teamName, this.state.playerName)
+    }
     this.setState({
       teamName: this.state.teamName,
       playerName: ''
@@ -99,8 +101,8 @@ class TeamBuild extends React.Component {
             <div>
             {this.showRoster(this.props.players)}
             </div>
+            {this.stopMessage()}
           </form>
-          {this.stopMessage()}
         </div>
       </section>
     );

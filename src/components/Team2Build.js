@@ -28,7 +28,9 @@ class TeamBuild extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addTeammates("TEAM_2", this.state.teamName, this.state.playerName)
+    if(this.state.playerName.length > 0) {
+      this.props.addTeammates("TEAM_2", this.state.teamName, this.state.playerName)
+    }
     this.setState({
       teamName: this.state.teamName,
       playerName: ''

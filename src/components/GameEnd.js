@@ -13,7 +13,6 @@ class GameEnd extends React.Component {
   }
 
   render(){
-    console.log(this.props.oneScore);
     return (
       <div id="gameEndContainer">
         {this.winner()}
