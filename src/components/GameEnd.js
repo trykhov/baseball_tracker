@@ -13,6 +13,7 @@ class GameEnd extends React.Component {
   }
 
   render(){
+    console.log(this.props.oneScore);
     return (
       <div id="gameEndContainer">
         {this.winner()}
@@ -29,4 +30,4 @@ const mapStateToProps = state => {
     twoScore: state.twoScore}
 }
 
-export default connect()(GameEnd);
+export default connect(mapStateToProps)(GameEnd);

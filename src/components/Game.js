@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { newInning, strike, youreOut, hit, changeArrow, score, currBatterOne, currBatterTwo } from '../actions';
+import { Redirect } from 'react-router-dom';
 import '../css/game.css';
 import bunt from '../img/bunt_cup.png';
 import single from '../img/single.png';
@@ -13,6 +14,10 @@ import ScoreTwo from './ScoreTwo.js';
 import CurrentBatter from './CurrentBatter.js';
 
 class Game extends React.Component {
+
+  state = {
+    redirect: false
+  }
 
   inningArrow = () => {
     if(this.props.topOrBottom) {
@@ -39,6 +44,7 @@ class Game extends React.Component {
     if(this.props.outs === 2) {
       if(!this.props.topOrBottom) {
         this.props.newInning();
+        this.endGame();
       }
       this.props.changeArrow();
       this.batterHit(0, false, true); // resets the field
@@ -92,13 +98,19 @@ class Game extends React.Component {
     }
   }
 
+  endGame = () => {
+    if(this.props.inning >= 3 && this.props.oneScore != this.props.twoScore) {
+      this.props.history.push("/game_over");
+    }
+  }
+
+
 
   // for testing only
   // console.log() runs faster than the change of state
-  componentDidUpdate() {
-    // console.log(this.props.team1[this.props.atBatOne], this.props.atBatOne);
-    // console.log(this.props.team2[this.props.atBatTwo], this.props.atBatTwo);
-  }
+  // componentDidUpdate() {
+  //
+  // }
 
   render() {
     return (
@@ -141,11 +153,13 @@ const mapStateToProps = state => {
     atBatOne: state.currBatOne,
     atBatTwo: state.currBatTwo,
     inning: state.inning,
+    oneScore: state.oneScore,
     outs: state.outs,
     strikes: state.strikes,
     team1: state.team1Players,
     team2: state.team2Players,
     topOrBottom: state.inDirection,
+    twoScore: state.twoScore
   }
 }
 
