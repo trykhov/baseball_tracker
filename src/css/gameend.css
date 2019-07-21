@@ -1,0 +1,23 @@
+#gameEndContainer {
+  min-height: 100vh;
+  position: relative;
+}
+
+#winner {
+  color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 5vw;
+  margin-top: 50%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+
+@media (max-width: 400px) {
+  #winner {
+    font-size: 10vw;
+    margin-top: 50%;
+    text-align: center;
+    word-wrap: break-word;
+  }
+}
