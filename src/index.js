@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
@@ -14,13 +14,13 @@ const store = createStore(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter basename="/">
         <Route path="/" component={App} exact/>
         <Route path="/team1_build" component={Team1Build} />
         <Route path="/team2_build" component={Team2Build} />
         <Route path="/play_ball" component={Game} />
         <Route path="/game_over" component={GameEnd} />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.querySelector("#root")
 );
