@@ -9,7 +9,9 @@ a {
 }
 
 #app_title {
+  font-family: 'Luckiest Guy', cursive;
   font-size: 60px;
+  margin-top: 40px;
   letter-spacing: 3px;
 }
 
@@ -20,8 +22,8 @@ body, html {
 }
 
 #solo_cup {
-  height: 100%;
-  width: 100%;
+  height: 30%;
+  width: 30%;
 }
 
 #teams_btn {
@@ -34,5 +36,16 @@ body, html {
   margin: 0 auto;
   padding: 20px 10px 10px 10px;
   text-decoration: none;
-  width: 50%;
+  width: 20%;
+}
+
+@media (max-width: 400px) {
+  #solo_cup {
+    height: 100%;
+    width: 100%;
+  }
+
+  #teams_btn {
+    width: 50%;
+  }
 }
