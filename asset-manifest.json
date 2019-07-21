@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/baseball_tracker/static/css/main.5bc6f021.chunk.css",
+    "main.js": "/baseball_tracker/static/js/main.7afa3743.chunk.js",
+    "main.js.map": "/baseball_tracker/static/js/main.7afa3743.chunk.js.map",
+    "runtime~main.js": "/baseball_tracker/static/js/runtime~main.4ec73964.js",
+    "runtime~main.js.map": "/baseball_tracker/static/js/runtime~main.4ec73964.js.map",
+    "static/js/2.1328814e.chunk.js": "/baseball_tracker/static/js/2.1328814e.chunk.js",
+    "static/js/2.1328814e.chunk.js.map": "/baseball_tracker/static/js/2.1328814e.chunk.js.map",
+    "index.html": "/baseball_tracker/index.html",
+    "precache-manifest.9ba6249903d97dd238e863526c8abc2b.js": "/baseball_tracker/precache-manifest.9ba6249903d97dd238e863526c8abc2b.js",
+    "service-worker.js": "/baseball_tracker/service-worker.js",
+    "static/css/main.5bc6f021.chunk.css.map": "/baseball_tracker/static/css/main.5bc6f021.chunk.css.map",
+    "static/media/bases_loaded.png": "/baseball_tracker/static/media/bases_loaded.a1eab457.png",
+    "static/media/bunt_cup.png": "/baseball_tracker/static/media/bunt_cup.c3658506.png",
+    "static/media/double.png": "/baseball_tracker/static/media/double.0b580394.png",
+    "static/media/empty_bases.png": "/baseball_tracker/static/media/empty_bases.0590fa0e.png",
+    "static/media/homerun.png": "/baseball_tracker/static/media/homerun.12783294.png",
+    "static/media/on_first.png": "/baseball_tracker/static/media/on_first.f6fa06e0.png",
+    "static/media/on_first_second.png": "/baseball_tracker/static/media/on_first_second.070f6a74.png",
+    "static/media/on_first_third.png": "/baseball_tracker/static/media/on_first_third.e9e24497.png",
+    "static/media/on_second.png": "/baseball_tracker/static/media/on_second.797478f9.png",
+    "static/media/on_second_third.png": "/baseball_tracker/static/media/on_second_third.c9176b0f.png",
+    "static/media/on_third.png": "/baseball_tracker/static/media/on_third.500ebc81.png",
+    "static/media/single.png": "/baseball_tracker/static/media/single.b30efc41.png",
+    "static/media/solo_cup.png": "/baseball_tracker/static/media/solo_cup.edc83876.png",
+    "static/media/triple.png": "/baseball_tracker/static/media/triple.f000e4fb.png"
+  }
+}
