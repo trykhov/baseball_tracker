@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Baseball Tracker App
 
-## Available Scripts
+### Inspiration of Idea
 
-In the project directory, you can run:
+The inspiration of this project came from attending a friend's birthday. He invited this drinking game called "Baseball" which ran similar to the real game of baseball. What I found interesting was that he created an app for this game to keep track of score and player stats but he used Python and Django and one thing I noticed was that the app was primarily mark up. I figured that I could try to make something similar using HTML, CSS, and JavaScript in order to make it more appealing.
 
-### `npm start`
+Cups are lined up across the table to represent the bases that the batter will cover if they successfully shoot the ball into the cup.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The rules are similar to baseball. Batters can "hit" the ball but if they miss and the other team catches the ball before it hits the ground (off the table) and shoots it into the batter's cup, then the batter is out. Else the batter has three chances to successfully shoot the ball. Three misses qualify as an out.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Features
 
-### `npm test`
+This app has various features. It has the basic features of adding players to teams as well as giving team names.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+One thing that I implemented was the batter rotation. This kept track of which batters were to up to bat and how many strikes they had as well as the current number of outs.
 
-### `npm run build`
+![demo](baseball_app_demo.gif)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In addition, I added a feature that kept track of the field. This meant that the user can see if anyone is on base.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Technology
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I used React.js to create the layout of this application. Since this game required saving information such as bases, score, and player names, I used Redux for state management.
 
-### `npm run eject`
+### Limitations
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+One thing that I would implement in the future for this app would be keeping track of player stats. It would be nice to see how players performed per game and get an idea of what their strengths and weaknesses were.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Things I've Learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This was perhaps the project where I learned about the ins and outs of Redux the most. In learning to keep track of state management, I had to learn how states were being stored along with how they were being shared with components that called for them. I finally understood the concept of central state management through actions and reducers. (In short, think of actions as water following through a pipe and reducers are basically filters that determine what goes through certain pipes)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Another thing I learned was how to run this app on Github Pages. My first attempt nearly gave me a heart attack. In looking at how to run this app on Github pages using the React tutorial, I erased my master branch with the build files because I had "gh-pages -b master -d build" as my "deploy" in my package.json file. However, I learned (the hard way) that this overwrites my master branch with the build files. After getting back my files from my previous commits, I switched it to "gh-pages -d build" and it created a separate branch where I can safely deploy this app.
