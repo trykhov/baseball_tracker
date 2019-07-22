@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5a895428008a1b5fc672c808e599e18a",
+    "revision": "f024d61dee89189712b36f3dafe05eee",
     "url": "/baseball_tracker/index.html"
   },
   {
-    "revision": "84f449bd4e14f108e9ba",
-    "url": "/baseball_tracker/static/css/main.e156f459.chunk.css"
+    "revision": "c5c3ea1c82e5a4783d1d",
+    "url": "/baseball_tracker/static/css/main.4adf1e16.chunk.css"
   },
   {
     "revision": "2cb614b458ee27c3eeef",
     "url": "/baseball_tracker/static/js/2.400d7387.chunk.js"
   },
   {
-    "revision": "84f449bd4e14f108e9ba",
+    "revision": "c5c3ea1c82e5a4783d1d",
     "url": "/baseball_tracker/static/js/main.ccb459ab.chunk.js"
   },
   {
