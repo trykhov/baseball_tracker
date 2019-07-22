@@ -1,5 +1,7 @@
 # Baseball Tracker App
 
+Try the app out here: https://trykhov.github.io/baseball_tracker/
+
 ### Inspiration of Idea
 
 The inspiration of this project came from attending a friend's birthday. He invited this drinking game called "Baseball" which ran similar to the real game of baseball. What I found interesting was that he created an app for this game to keep track of score and player stats but he used Python and Django and one thing I noticed was that the app was primarily mark up. I figured that I could try to make something similar using HTML, CSS, and JavaScript in order to make it more appealing.
