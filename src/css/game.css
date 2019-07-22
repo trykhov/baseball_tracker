@@ -43,6 +43,10 @@
   margin: 50px 0;
 }
 
+#out:hover {
+  background-color: #a23131;
+}
+
 
 #score {
   display: flex;
@@ -64,6 +68,10 @@
   margin-right: 30px;
 }
 
+#strike:hover {
+  background-color: #ffdd67;
+}
+
 #strike, #out {
   border-radius: 16px;
   height: 8vh;
@@ -79,6 +87,11 @@
 @media (max-width: 400px) {
   #fieldContainer {
     width: 80%;
+  }
+
+  .shots {
+    width: 20vw;
+    height: 10vh;
   }
 
   #strike, #out {
